@@ -27,7 +27,14 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav justify-content-end">
-            <li class="nav-item active">
+            <li class="nav-item">
+                {% if user.is_authenticated %} {# 유저가 로그인 중이면 #}
+                <a href="{% url 'account_logout' %}" class="nav-link">Logout</a>
+                {% else %}
+                <a href="{% url 'account_login' %}" class="nav-link">Login</a>
+                {% endif %}
+            </li>
+            <li class="nav-item">
                 <a href="" class="nav-link btn btn-outline-success">Cart
                 {% if cart|length > 0 %}
                 ${{ cart.get_product_total }}with{{ cart|length }} items

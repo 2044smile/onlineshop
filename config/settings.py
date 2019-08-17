@@ -41,6 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'storages',
     'shop',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account', # 가입한 계정 관리
+    'allauth.socialaccount', # 소셜 계정으로 가입한 계정 관리
+    'allauth.socialaccount.providers.naver', # 어떤 소셜 서비스를 사용하는지 추가
+    'cart',
 ]
 
 MIDDLEWARE = [
@@ -121,6 +127,15 @@ USE_L10N = True
 
 USE_TZ = True
 
+# allauth
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+
+
 # AWS S3
 AWS_ACCESS_KEY_ID = 'AKIA2AICUFBXHS3SQ6L5'
 AWS_SECRET_ACCESS_KEY = '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'
@@ -137,4 +152,7 @@ STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 DEFAULT_FILE_STORAGE = 'config.asset_storage.MediaStorage'
+
+# cart.py
+CART_ID = 'cart_in_session'
 
