@@ -21,3 +21,18 @@ def add(request, product_id):
 
         return redirect('cart:detail')
 
+def remove(request, product_id):
+    cart = Cart(request)
+    product = get_object_or_404(Product, id=product_id)
+    cart.remove(product)
+    return redirect('cart:detail')
+
+def detail(request): # 장바구니 페이지
+    cart = Cart(request)
+    # 노출 될 제품들은 카트 객체로부터 가져오는데 제품 수량 수정을 위해서 AddProductForm을 제품마다 하나씩 추가 해준다.
+    # 이 때 수량은 수정하는 대로 반영해야 하기 때문에 is_update=True로 설정했다.
+    for product in cart:
+        product['quantity_form'] = AddProductForm(initial={'quantity':product['quantity'], 'is_update':True})
+        return render(request, 'cart/detail.html', {'cart':cart})
+
+
