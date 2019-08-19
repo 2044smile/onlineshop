@@ -1,36 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5bded59b-5eae-40d8-9f79-cbbf0c706d2e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/templates/cart/detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cart/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coupon/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coupon/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coupon/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coupon/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coupon/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coupon/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coupon/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coupon/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coupon/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coupon/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/iamport.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/order/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/cart.py" beforeDir="false" afterPath="$PROJECT_DIR$/cart/cart.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cart/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/cart/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="5bded59b-5eae-40d8-9f79-cbbf0c706d2e" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,6 +101,14 @@
       <workItem from="1565968926650" duration="4000" />
       <workItem from="1566015486811" duration="6118000" />
     </task>
+    <task id="LOCAL-00001" summary="order/models.py complate">
+      <created>1566209775197</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1566209775197</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,5 +129,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="order/models.py complate" />
+    <option name="LAST_COMMIT_MESSAGE" value="order/models.py complate" />
   </component>
 </project>
