@@ -5,15 +5,17 @@
 from decimal import Decimal
 from django.conf import settings
 from shop.models import Product
+from coupon.models import Coupon
 
 class Cart(object):
     def __init__(self, request):
         self.session = request.session
-        cart = self.session.get(settings.CARD_ID)
+        cart = self.session.get(settings.CART_ID)
         if not cart: # 세션에 없던 키 값을 생성하면 자동저장
             cart = self.session[settings.CART_ID] = {}
             # 세션에 이미 있는 키 값에 대한 값을 수정하면 수동으로 저장
         self.cart = cart
+        self.coupon_id = self.session.get('coupon_id')
 
     def __len__(self):
         # 요소가 몇개인지 갯수를 반환해주는 함수
@@ -60,7 +62,26 @@ class Cart(object):
 
     def clear(self): # 장바구니를 비우는 기능, 주문 완료했을 때도 사용
         self.session[settings.CART_ID] = {}
+        self.session['coupon_id'] = None # 장바구니 비우기 할 때는 쿠폰 정보도 삭제해야 되기 때문에 clear 메서드는 세션에 저장된 coupon_id를 None으로 지정
         self.session.modified = True
+
 
     def get_product_total(self): # 장바구니에 담긴 상품의 총 가격을 계산
         return sum(Decimal(item['price'])*item['quantity'] for item in self.cart.values())
+
+    # coupon
+    @property # 프로퍼티 형태로 만들기 위해 생성
+    def coupon(self):
+        if self.coupon_id:
+            return Coupon.objects.get(id=self.coupon_id)
+        return None
+
+    def get_discount_total(self):
+        if self.coupon:
+            if self.get_product_total() >= self.coupon.amount: # 쿠폰의 할인 가격보다 제품의 총 가격이 크면
+                return self.coupon.amount # 쿠폰 할인 가격을 get_discount_total 로 return 해라
+        return Decimal(0)
+
+    def get_total_price(self): # 할인 이후 금액
+        return self.get_product_total() - self.get_discount_total() # 제품의 총액 - 할인되는 금액
+

@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount', # 소셜 계정으로 가입한 계정 관리
     'allauth.socialaccount.providers.naver', # 어떤 소셜 서비스를 사용하는지 추가
     'cart',
+    'coupon',
+    'order',
 ]
 
 MIDDLEWARE = [
@@ -64,7 +66,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,6 +136,12 @@ AUTHENTICATION_BACKENDS = (
 )
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
+# cart.py
+CART_ID = 'cart_in_session'
+
+# iamport(결제시스템)
+IAMPORT_KEY = '5339475625789683'
+IAMPORT_SECRET = '5OJeRqEnJZibMQO2pBSkhKIX1ja3WfQ14AgV0VjKUCVHsKKSlCcDmUAodKra0ib4Ss0TokDjWz1pjLhF'
 
 
 # AWS S3
@@ -152,7 +160,4 @@ STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 DEFAULT_FILE_STORAGE = 'config.asset_storage.MediaStorage'
-
-# cart.py
-CART_ID = 'cart_in_session'
 
