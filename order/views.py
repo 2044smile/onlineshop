@@ -3,6 +3,7 @@ from .models import *
 from cart.cart import Cart
 from .forms import *
 
+
 def order_create(request):
     cart = Cart(request)
     if request.method == 'POST':
@@ -17,10 +18,34 @@ def order_create(request):
                 OrderItem.objects.create(order=order, product=item['product'], price=item['price'], quantity=item['quantity'])
 
             cart.clear()
-            return render(request, 'order/created.html', {'order': order})
+            return render(request, 'order/created.html', {'order':order})
     else:
         form = OrderCreateForm()
     return render(request, 'order/create.html', {'cart':cart, 'form':form})
+
+
+from django.contrib.admin.views.decorators import staff_member_required
+@staff_member_required
+def admin_order_detail(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+    return render(request, 'order/admin/detail.html', {'order':order})
+
+
+# pdf를 위한 임포트
+from django.conf import settings
+from django.http import HttpResponse
+from django.template.loader import render_to_string
+import weasyprint
+
+
+@staff_member_required
+def admin_order_pdf(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+    html = render_to_string('order/admin/pdf.html', {'order': order})
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'filename=order_{}.pdf'.format(order.id)
+    weasyprint.HTML(string=html).write_pdf(response, stylesheets=[weasyprint.CSS(settings.STATICFILES_DIRS[0]+'/css/pdf.css')])
+    return response
 
 
 # ajax로 결제 후에 보여줄 결제 완료 화면
@@ -29,9 +54,11 @@ def order_complete(request):
     order = Order.objects.get(id=order_id)
     return render(request,'order/created.html',{'order':order})
 
+
 # 결제를 위한 임포트
 from django.views.generic.base import View
 from django.http import JsonResponse
+
 
 class OrderCreateAjaxView(View):
     def post(self, request, *args, **kwargs):
@@ -85,6 +112,7 @@ class OrderCheckoutAjaxView(View):
             return JsonResponse(data)
         else:
             return JsonResponse({}, status=401)
+
 
 # 실제 결제가 이뤄진 것이 있는지 확인
 class OrderImpAjaxView(View):
