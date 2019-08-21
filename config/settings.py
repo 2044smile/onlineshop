@@ -74,6 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.cart',
             ],
         },
     },
@@ -145,8 +146,8 @@ IAMPORT_SECRET = '5OJeRqEnJZibMQO2pBSkhKIX1ja3WfQ14AgV0VjKUCVHsKKSlCcDmUAodKra0i
 
 
 # AWS S3
-AWS_ACCESS_KEY_ID = 'AKIA2AICUFBXHS3SQ6L5'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = 'AKIA2AICUFBXOYW4ZBES'
+AWS_SECRET_ACCESS_KEY = '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'
 AWS_REGION = 'ap-northeast-2'
 AWS_STORAGE_BUCKET_NAME = 'onlineshop-2044smile'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.%s.amazonaws.com' % (AWS_STORAGE_BUCKET_NAME, AWS_REGION)
