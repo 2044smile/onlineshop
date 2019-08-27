@@ -25,9 +25,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '@^7w3!8(&q!trot)47&cew(u-ec9m3mgphe$)!!#ws6og&ja1&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+# DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.compute.amazonaws.com']
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -146,8 +148,8 @@ IAMPORT_SECRET = '5OJeRqEnJZibMQO2pBSkhKIX1ja3WfQ14AgV0VjKUCVHsKKSlCcDmUAodKra0i
 
 
 # AWS S3
-AWS_ACCESS_KEY_ID = 'AKIA2AICUFBXOYW4ZBES'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = 'AKIA2AICUFBXG35UH67H'
+AWS_SECRET_ACCESS_KEY = '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'
 AWS_REGION = 'ap-northeast-2'
 AWS_STORAGE_BUCKET_NAME = 'onlineshop-2044smile'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.%s.amazonaws.com' % (AWS_STORAGE_BUCKET_NAME, AWS_REGION)
